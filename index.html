@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kenneth & Dorothy's Wedding</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blush: #fce4ec;
+      --blush-dark: #f8bbd0;
+      --text-dark: #4a4a4a;
+      --gold: #c5a365;
+      --bg-color: #faf9f6;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Lato', sans-serif;
+      background: linear-gradient(135deg, var(--bg-color) 0%, var(--blush) 100%);
+      color: var(--text-dark);
+      line-height: 1.6;
+      text-align: center;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; }
+    .script-font { font-family: 'Great Vibes', cursive; color: var(--gold); }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Hero Section */
+    .hero { padding: 60px 0; }
+    .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+    .hero .date { font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 30px; }
+    .photo-frame {
+      width: 100%;
+      max-width: 400px;
+      height: 400px;
+      margin: 0 auto 30px;
+      border-radius: 200px 200px 10px 10px; /* Elegant arch shape */
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border: 5px solid white;
+    }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Cards */
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 15px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    
+    .card h2 { font-size: 2rem; margin-bottom: 20px; color: var(--gold); }
+    
+    /* Schedule & Travel */
+    .schedule-list, .travel-list { list-style: none; text-align: center; }
+    .schedule-list li { margin-bottom: 15px; font-size: 1.1rem; }
+    .schedule-list strong { font-family: 'Playfair Display', serif; font-size: 1.2rem; display: block; }
+    
+    .map-container {
+      margin-top: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    iframe { border: 0; width: 100%; height: 350px; }
+
+    /* Form */
+    form { display: flex; flex-direction: column; gap: 15px; text-align: left; }
+    label { font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--blush-dark);
+      border-radius: 5px;
+      font-family: 'Lato', sans-serif;
+      background: white;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 8px rgba(197, 163, 101, 0.3);
+    }
+    button {
+      background: var(--gold);
+      color: white;
+      border: none;
+      padding: 15px;
+      font-size: 1.2rem;
+      font-family: 'Playfair Display', serif;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      margin-top: 10px;
+    }
+    button:hover { background: #b08d55; transform: translateY(-2px); }
+    
+    #formMessage { margin-top: 20px; font-weight: bold; display: none; text-align: center; }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2.5rem; }
+      .card { padding: 30px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Hero Section -->
+    <header class="hero fade-in">
+      <div class="photo-frame">
+        <!-- REPLACE "your-photo.jpg" WITH YOUR ACTUAL IMAGE FILE NAME -->
+        <img src="your-photo.jpg" alt="Kenneth and Dorothy">
+      </div>
+      <h2 class="script-font" style="font-size: 2.5rem; margin-bottom: -10px;">We're getting married!</h2>
+      <h1>Kenneth & Dorothy</h1>
+      <div class="date">November 1, 2026</div>
+    </header>
+
+    <!-- Details & Schedule Section -->
+    <section class="card fade-in">
+      <h2>The Details</h2>
+      <p style="margin-bottom: 25px; font-size: 1.1rem;">
+        <strong>Kerry Hotel</strong><br>
+        38 Hung Luen Road, Hung Hom Bay, Kowloon
+      </p>
+      
+      <h3 style="margin: 30px 0 15px; color: var(--gold);">Schedule of Events</h3>
+      <ul class="schedule-list">
+        <li><strong>11:30 AM</strong> Guest Reception</li>
+        <li><strong>12:00 PM</strong> Wedding Ceremony</li>
+        <li><strong>12:30 PM</strong> Lunch Banquet</li>
+      </ul>
+    </section>
+
+    <!-- Travel Section -->
+    <section class="card fade-in">
+      <h2>Getting There</h2>
+      <p style="margin-bottom: 20px;">
+        <strong>By MTR:</strong> Take the Kwun Tong Line to <strong>Whampoa Station (Exit C2)</strong>. 
+        Turn right out of the station, walk down Shung King Street, and turn left onto Hung Luen Road. The hotel is a short 5-7 minute walk.
+      </p>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.314227918598!2d114.1887309!3d22.2991666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340400e008dff41f%3A0xc3b6b1945f470557!2sKerry%20Hotel%2C%20Hong%20Kong!5e0!3m2!1sen!2shk!4v1700000000000!5m2!1sen!2shk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="card fade-in">
+      <h2>RSVP</h2>
+      <p style="margin-bottom: 25px;">Please confirm your attendance by <strong style="color: var(--text-dark);">September 30, 2026</strong>.</p>
+      
+      <form name="submit-to-google-sheet">
+        <label for="name">Guest Name(s)</label>
+        <input type="text" id="name" name="Name" required placeholder="e.g., John & Jane Doe">
+        
+        <label for="attendees">Number of Attendees</label>
+        <select id="attendees" name="Attendees" required>
+          <option value="" disabled selected>Select number of guests</option>
+          <option value="0">0 (Regretfully decline)</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+        
+        <label for="dietary">Dietary Requirements / Allergies</label>
+        <textarea id="dietary" name="Dietary" rows="3" placeholder="Leave blank if none."></textarea>
+        
+        <button type="submit" id="submitBtn">Send RSVP</button>
+      </form>
+      <div id="formMessage"></div>
+    </section>
+  </div>
+
+  <script>
+    // Scroll Animation Logic
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(element => {
+      observer.observe(element);
+    });
+
+    // Form Submission Logic
+    // REPLACE THIS URL WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwAvsspSsexQtLXK44TXoKZbeq6T1XfWnHFEk7IZ4cQFSjfWhiPeQ5SRlHQdUhR63_f/exec'; 
+    const form = document.forms['submit-to-google-sheet'];
+    const btn = document.getElementById('submitBtn');
+    const msg = document.getElementById('formMessage');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      btn.innerText = "Sending...";
+      btn.disabled = true;
+      
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+          msg.innerHTML = "Thank you! Your RSVP has been received.";
+          msg.style.display = "block";
+          msg.style.color = "#4caf50";
+          form.reset();
+          btn.innerText = "Send RSVP";
+          btn.disabled = false;
+        })
+        .catch(error => {
+          console.error('Error!', error.message);
+          msg.innerHTML = "Something went wrong. Please try again.";
+          msg.style.display = "block";
+          msg.style.color = "red";
+          btn.innerText = "Send RSVP";
+          btn.disabled = false;
+        });
+    });
+  </script>
+</body>
+</html>
