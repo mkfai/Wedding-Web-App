@@ -170,8 +170,8 @@
       <p style="margin-bottom: 25px;">Please confirm your attendance by <strong style="color: var(--text-dark);">September 30, 2026</strong>.</p>
       
       <form name="submit-to-google-sheet">
-        <label for="name">Guest Name(s)</label>
-        <input type="text" id="name" name="Name" required placeholder="e.g., Dorothy & Kenneth Man">
+        <label for="name">Guest Name(s) / 賓客姓名</label>
+        <input type="text" id="name" name="Name" required placeholder="Please provide full names of all attendees e.g. Dorothy Chui & Kenneth Man">
         
         <label for="attendees">Number of Attendees</label>
         <select id="attendees" name="Attendees" required>
@@ -186,7 +186,10 @@
         </select>
         
         <label for="dietary">Dietary Requirements / Allergies</label>
-        <textarea id="dietary" name="Dietary" rows="3" placeholder="Leave blank if none."></textarea>
+        <textarea id="dietary" name="Dietary" rows="2" placeholder="Leave blank if none (e.g., Vegetarian, Shellfish Allergy)"></textarea>
+
+        <label for="seatingRemarks">Seating Remarks for Babies / Young Children</label>
+        <textarea id="seatingRemarks" name="SeatingRemarks" rows="3" placeholder="Leave blank if none. Please inform us of the names and number of babies/children who do not require a meal portion. Please let us know if a high chair is required."></textarea>
         
         <button type="submit" id="submitBtn">Send RSVP</button>
       </form>
