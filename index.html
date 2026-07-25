@@ -15,11 +15,11 @@
     }
     
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
+    
     html {
       scroll-behavior: smooth; /* Enables the smooth gliding effect for navigation */
     }
-    
+
     body {
       font-family: 'Lato', sans-serif;
       background: linear-gradient(135deg, var(--bg-color) 0%, var(--blush) 100%);
@@ -127,6 +127,7 @@
       border-radius: 15px;
       margin-bottom: 40px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      scroll-margin-top: 20px; /* <--- ADDED: Prevents the top of the card from hiding under the browser edge when scrolling */
     }
     
     .card h2 { font-size: 2rem; margin-bottom: 20px; color: var(--gold); }
@@ -201,8 +202,8 @@
     button:hover { background: #b08d55; transform: translateY(-2px); }
     
     #formMessage { margin-top: 20px; font-weight: bold; display: none; text-align: center; }
-       
-       /* FAQ Section */
+        
+    /* FAQ Section */
     .faq-container { text-align: left; margin-top: 20px; }
     details {
       background: white;
@@ -278,7 +279,8 @@
     </nav>
 
     <!-- Details & Schedule Section -->
-    <section class="card fade-in">
+    <!-- ADDED id="details" HERE -->
+    <section class="card fade-in" id="details">
       <h2>The Details</h2>
       <p style="margin-bottom: 25px; font-size: 1.1rem;">
         <strong>Kerry Hotel<br>Level 1, Hung Hom Room 1 + 2</strong><br>
@@ -323,7 +325,8 @@
     </section>
 
     <!-- Travel Section -->
-    <section class="card fade-in">
+    <!-- ADDED id="travel" HERE -->
+    <section class="card fade-in" id="travel">
       <h2>Getting There</h2>
       <p style="margin-bottom: 20px;">
         <strong>By MTR:</strong> Take the Kwun Tong Line to <strong>Whampoa Station (Exit C2)</strong>. 
@@ -335,8 +338,9 @@
       </div>
     </section>
 
-<!-- FAQ Section -->
-    <section class="card fade-in">
+    <!-- FAQ Section -->
+    <!-- ADDED id="faq" HERE -->
+    <section class="card fade-in" id="faq">
       <h2>FAQ / 常見問答</h2>
       
       <div class="faq-container">
@@ -403,7 +407,6 @@
           </div>
         </details>
 
-
         <!-- Question 8 -->
         <details>
           <summary>Is hotel parking provided? / 請問酒店有提供泊車位嗎？</summary>
@@ -413,12 +416,12 @@
           </div>
         </details>
 
-
       </div>
     </section>
 
     <!-- RSVP Section -->
-    <section class="card fade-in">
+    <!-- ADDED id="rsvp" HERE -->
+    <section class="card fade-in" id="rsvp">
       <h2>RSVP</h2>
       <p style="margin-bottom: 25px;">Please confirm your attendance by <strong style="color: var(--text-dark);">September 26, 2026</strong>.</p>
       
