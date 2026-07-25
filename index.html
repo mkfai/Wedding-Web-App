@@ -115,6 +115,38 @@
     button:hover { background: #b08d55; transform: translateY(-2px); }
     
     #formMessage { margin-top: 20px; font-weight: bold; display: none; text-align: center; }
+       
+       /* FAQ Section */
+    .faq-container { text-align: left; margin-top: 20px; }
+    details {
+      background: white;
+      border: 1px solid var(--blush-dark);
+      border-radius: 5px;
+      margin-bottom: 10px;
+      padding: 15px;
+      transition: all 0.3s ease;
+    }
+    details[open] { border-color: var(--gold); box-shadow: 0 4px 10px rgba(197, 163, 101, 0.15); }
+    summary {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none; /* Removes default arrow in most browsers */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-dark);
+    }
+    summary::-webkit-details-marker { display: none; /* Removes default arrow in Safari */ }
+    summary::after {
+      content: '+';
+      color: var(--gold);
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+    details[open] summary::after { content: '-'; }
+    .faq-content { margin-top: 15px; font-size: 1rem; color: #555; padding-top: 10px; border-top: 1px dashed var(--blush-dark); }
 
     @media (max-width: 600px) {
       .hero h1 { font-size: 2.5rem; }
@@ -141,14 +173,16 @@
       <h2>The Details</h2>
       <p style="margin-bottom: 25px; font-size: 1.1rem;">
         <strong>Kerry Hotel<br>Level 1, Hung Hom Room 1 + 2</strong><br>
-        38 Hung Luen Road, Hung Hom Bay, Kowloon
+        38 Hung Luen Road, Hung Hom Bay, Kowloon<br><br>
+        香港嘉里酒店 紅磡廳1 & 2<br>
+        九龍 紅磡灣 紅鸞道38號
       </p>
       
       <h3 style="margin: 30px 0 15px; color: var(--gold);">Schedule of Events</h3>
       <ul class="schedule-list">
-        <li><strong>11:30 AM</strong> Guest Reception</li>
-        <li><strong>12:00 PM</strong> Wedding Ceremony</li>
-        <li><strong>12:30 PM</strong> Chinese Lunch Banquet</li>
+        <li><strong>11:30 AM</strong> Guest Reception | 恭候</li>
+        <li><strong>12:00 PM</strong> Wedding Ceremony | 証婚儀式</li>
+        <li><strong>12:30 PM</strong> Chinese Lunch Banquet | 午宴</li>
       </ul>
     </section>
 
@@ -157,17 +191,100 @@
       <h2>Getting There</h2>
       <p style="margin-bottom: 20px;">
         <strong>By MTR:</strong> Take the Kwun Tong Line to <strong>Whampoa Station (Exit C2)</strong>. 
-        Turn right out of the station, walk down Shung King Street, and turn left onto Hung Luen Road. The hotel is a short 5-7 minute walk.
+        Turn right out of the station, walk down Shung King Street, and turn left onto Hung Luen Road. The hotel is a short 5-7 minute walk.<br>
+        經黃埔港鐵站 C2出口到達地面後向右轉。沿船景街走，直至交通燈路口，轉左前往紅鸞道，酒店便位於右邊。
       </p>
       <div class="map-container">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.314227918598!2d114.1887309!3d22.2991666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340400e008dff41f%3A0xc3b6b1945f470557!2sKerry%20Hotel%2C%20Hong%20Kong!5e0!3m2!1sen!2shk!4v1700000000000!5m2!1sen!2shk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </section>
 
+<!-- FAQ Section -->
+    <section class="card fade-in">
+      <h2>常見問答 / FAQ</h2>
+      
+      <div class="faq-container">
+        <!-- Question 1 -->
+        <details>
+          <summary>Do I need to RSVP? / 請問需要回覆出席與否（RSVP）嗎？</summary>
+          <div class="faq-content">
+            Yes, please! RSVPing helps us finalize our headcount and ensure everything runs smoothly. If you need any assistance with the process, please feel free to reach out to us or our parents. <br><br>
+            需要的！為方便我們預計人數和準備入席安排，請務必抽空回覆。如果您在回覆時遇到任何困難，歡迎隨時聯絡我們或雙方父母協助。
+          </div>
+        </details>
+
+        <!-- Question 2 -->
+        <details>
+          <summary>How do I RSVP? / 我該如何回覆出席（RSVP）？</summary>
+          <div class="faq-content">
+            You can RSVP directly through the "RSVP" tab on this website. Simply enter your full Chinese or English name (for English: First Name followed by Last Name). If you are responding for yourself and a guest (or your family), you will be able to submit the RSVP for your entire group together.<br><br>
+            您可以直接在本網站的「RSVP」部份進行回覆。請輸入您的中文或英文全名（如輸入英文：請先輸入名字再輸入姓氏，例如：Dorothy Chui, Kenneth Man）。若您是代表同行伴侶或家人回覆，您將可以一次過為大家一併登記。
+          </div>
+        </details>
+
+        <!-- Question 3 -->
+        <details>
+          <summary>When is the RSVP deadline? / RSVP（回覆出席）的最後期限是何時？</summary>
+          <div class="faq-content">
+            Please RSVP by September 26, 2026, so we can finalize our numbers with the venue.<br><br>
+            請於 2026 年 9 月 26 日前確認是否出席，以便我們與場地確認最終人數。
+          </div>
+        </details>
+
+        <!-- Question 4 -->
+        <details>
+          <summary>Can I bring a plus one? / 我可以攜伴參加嗎？</summary>
+          <div class="faq-content">
+            We would love to share our joy with all our friends and family! However, due to venue capacity, seats are limited. If you would like to bring a guest, please check with us or our parents as soon as possible, and we will do our very best to accommodate.<br><br>
+            我們非常希望能與所有親朋好友分享這份喜悅！但由於場地座位有限，如果您希望攜伴出席，請儘早與我們或雙方父母聯絡，我們會盡力為您安排。
+          </div>
+        </details>
+
+        <!-- Question 5 -->
+        <details>
+          <summary>What is the dress code? / 婚禮衣著有什麼要求？</summary>
+          <div class="faq-content">
+            Feel free to wear whatever makes you feel beautiful and comfortable! <br><br>
+            請穿上讓您感到自信和舒適的服裝！
+          </div>
+        </details>
+
+        <!-- Question 6 -->
+        <details>
+          <summary>Will there be vegetarian options? / 婚宴有提供素食嗎？</summary>
+          <div class="faq-content">
+            Unfortunately, we are unable to provide a vegetarian menu for the banquet. We apologize for any inconvenience this may cause and sincerely appreciate your understanding! <br><br>
+            抱歉，是次婚宴未能提供素食餐單。如有不便，敬請見諒，非常感謝您的體諒！
+          </div>
+        </details>
+
+        <!-- Question 7 -->
+        <details>
+          <summary>What if I need to arrive late or leave early? / 我可以晚點到或提早離開嗎？</summary>
+          <div class="faq-content">
+            That is absolutely fine, but please let us know in advance! We want to make sure we have the chance to personally thank you and take a photo together to commemorate the day. <br><br>
+            當然可以！但煩請提早告知我們，因為我們非常希望能有機會親自向每一位賓客道謝並合照留念。
+          </div>
+        </details>
+
+
+        <!-- Question 8 -->
+        <details>
+          <summary>Is hotel parking provided? / 請問酒店有提供泊車位嗎？</summary>
+          <div class="faq-content">
+            Unfortunately, hotel parking is not included or reserved for our wedding guests. If you plan to drive, please note that space at the hotel is subject to availability. Should the lot be full, you may need to use alternative parking facilities nearby. We recommend allowing a little extra time for parking before the celebration begins! <br><br>
+            抱歉，是次婚宴未能提供或預留酒店泊車位。如果您打算駕車前往，請留意酒店車位需視乎當日供應情況而定。若車位已滿，賓客可能需要使用附近的停車場。建議駕車的賓客預留充裕的時間尋找泊車位！
+          </div>
+        </details>
+
+
+      </div>
+    </section>
+
     <!-- RSVP Section -->
     <section class="card fade-in">
       <h2>RSVP</h2>
-      <p style="margin-bottom: 25px;">Please confirm your attendance by <strong style="color: var(--text-dark);">September 30, 2026</strong>.</p>
+      <p style="margin-bottom: 25px;">Please confirm your attendance by <strong style="color: var(--text-dark);">September 26, 2026</strong>.</p>
       
       <form name="submit-to-google-sheet">
         <label for="name">Guest Name(s) / 賓客姓名</label>
