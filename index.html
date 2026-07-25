@@ -58,6 +58,63 @@
     }
     .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
 
+    /* Countdown Timer */
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .countdown-box {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 20px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border: 1px solid var(--blush-dark);
+    }
+    .countdown-box span {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--gold);
+      font-weight: 600;
+      line-height: 1;
+    }
+    .countdown-label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-dark);
+      margin-top: 8px;
+    }
+
+    /* Navigation Menu */
+    .nav-menu {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+    .nav-menu a {
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--text-dark);
+      padding: 12px 25px;
+      border-radius: 30px;
+      border: 1px solid var(--blush-dark);
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      font-size: 1.1rem;
+    }
+    .nav-menu a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
     /* Cards */
     .card {
       background: rgba(255, 255, 255, 0.85);
@@ -70,11 +127,36 @@
     
     .card h2 { font-size: 2rem; margin-bottom: 20px; color: var(--gold); }
     
-    /* Schedule & Travel */
-    .schedule-list, .travel-list { list-style: none; text-align: center; }
-    .schedule-list li { margin-bottom: 15px; font-size: 1.1rem; }
-    .schedule-list strong { font-family: 'Playfair Display', serif; font-size: 1.2rem; display: block; }
+    /* Two-Column Schedule */
+    .schedule-wrapper { margin-top: 30px; }
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 30px;
+      text-align: left;
+      margin-bottom: 25px;
+      padding-bottom: 25px;
+      border-bottom: 1px dashed var(--blush-dark);
+    }
+    .schedule-grid:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .schedule-time strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--text-dark);
+      display: block;
+      margin-bottom: 5px;
+    }
+    .schedule-desc {
+      font-size: 1.05rem;
+      color: #555;
+    }
+    .schedule-desc br { margin-bottom: 10px; content: ""; display: block; }
     
+    /* Map */
     .map-container {
       margin-top: 20px;
       border-radius: 10px;
@@ -151,6 +233,13 @@
     @media (max-width: 600px) {
       .hero h1 { font-size: 2.5rem; }
       .card { padding: 30px 20px; }
+      .countdown-box span { font-size: 2.5rem; }
+      
+      /* Stacks the schedule cleanly on mobile phones */
+      .schedule-grid { grid-template-columns: 1fr; gap: 10px; }
+      
+      /* Make navigation buttons smaller on mobile */
+      .nav-menu a { padding: 10px 18px; font-size: 1rem; }
     }
   </style>
 </head>
@@ -168,6 +257,22 @@
       <div class="date">November 1, 2026</div>
     </header>
 
+    <!-- Countdown Timer -->
+    <div class="countdown-container fade-in" id="countdown">
+      <div class="countdown-box">
+        <span id="days">00</span>
+        <div class="countdown-label">Days to go</div>
+      </div>
+    </div>
+
+    <!-- Quick Navigation Menu -->
+    <nav class="nav-menu fade-in">
+      <a href="#details">Details</a>
+      <a href="#travel">Getting There</a>
+      <a href="#faq">FAQ</a>
+      <a href="#rsvp">RSVP</a>
+    </nav>
+
     <!-- Details & Schedule Section -->
     <section class="card fade-in">
       <h2>The Details</h2>
@@ -178,12 +283,39 @@
         九龍 紅磡灣 紅鸞道38號
       </p>
       
-      <h3 style="margin: 30px 0 15px; color: var(--gold);">Schedule of Events</h3>
-      <ul class="schedule-list">
-        <li><strong>11:30 AM</strong> Guest Reception | 恭候<br>Light refreshments and sparkling wine will be served. We invite you to arrive early, mingle, and enjoy a drink before the celebration begins.<br>屆時將供應輕便茶點與氣泡酒，歡迎各位提前到場享用，與我們一同分享這份喜悅。</li>
-        <li><strong>12:00 PM</strong> Wedding Ceremony | 証婚儀式<br>The ceremony will be held in the foyer. Please note that due to space constraints at the venue, seating is limited. If you don't mind standing, we would be absolutely thrilled to have you join us for this special moment.<br>證婚儀式將於前廳舉行。受場地空間限制，座位數量有限。如不介意稍作站立，我們非常期待您能參與其中，與我們一同見證這重要的一刻。</li>
-        <li><strong>12:30 PM</strong> Chinese Lunch Banquet | 午宴<br>We warmly invite all our guests to join us in celebrating this wonderful milestone. Wine will be served throughout the banquet.<br>誠邀所有賓客與我們一同慶祝這個美好時刻！婚宴期間將會為大家供應餐酒。</li>
-      </ul>
+      <div class="schedule-wrapper">
+        <h3 style="margin: 30px 0 20px; color: var(--gold);">Schedule of Events</h3>
+        
+        <div class="schedule-grid">
+          <div class="schedule-time">
+            <strong>11:30 AM</strong>
+            Guest Reception<br>恭候
+          </div>
+          <div class="schedule-desc">
+            Light refreshments and sparkling wine will be served. We invite you to arrive early, mingle, and enjoy a drink before the celebration begins.<br>屆時將供應輕便茶點與氣泡酒，歡迎各位提前到場享用，與我們一同分享這份喜悅。
+          </div>
+        </div>
+
+        <div class="schedule-grid">
+          <div class="schedule-time">
+            <strong>12:00 PM</strong>
+            Wedding Ceremony<br>証婚儀式
+          </div>
+          <div class="schedule-desc">
+            The ceremony will be held in the foyer. Please note that due to space constraints at the venue, seating is limited. If you don't mind standing, we would be absolutely thrilled to have you join us for this special moment.<br>證婚儀式將於前廳舉行。受場地空間限制，座位數量有限。如不介意稍作站立，我們非常期待您能參與其中，與我們一同見證這重要的一刻。
+          </div>
+        </div>
+
+        <div class="schedule-grid">
+          <div class="schedule-time">
+            <strong>12:30 PM</strong>
+            Lunch Banquet<br>午宴
+          </div>
+          <div class="schedule-desc">
+            We warmly invite all our guests to join us in celebrating this wonderful milestone. Wine will be served throughout the banquet.<br>誠邀所有賓客與我們一同慶祝這個美好時刻！婚宴期間將會為大家供應餐酒。
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Travel Section -->
@@ -201,7 +333,7 @@
 
 <!-- FAQ Section -->
     <section class="card fade-in">
-      <h2>常見問答 / FAQ</h2>
+      <h2>FAQ / 常見問答</h2>
       
       <div class="faq-container">
         <!-- Question 1 -->
@@ -217,7 +349,7 @@
         <details>
           <summary>How do I RSVP? / 我該如何回覆出席（RSVP）？</summary>
           <div class="faq-content">
-            You can RSVP directly through the "RSVP" tab on this website. Simply enter your full Chinese or English name (for English: First Name followed by Last Name). If you are responding for yourself and a guest (or your family), you will be able to submit the RSVP for your entire group together.<br><br>
+            You can RSVP directly through the "RSVP" tab on this website. Simply enter your full Chinese or English name (for English: First Name followed by Last Name, e.g.:Dorothy Chui, Kenneth Man). If you are responding for yourself and a guest (or your family), you will be able to submit the RSVP for your entire group together.<br><br>
             您可以直接在本網站的「RSVP」部份進行回覆。請輸入您的中文或英文全名（如輸入英文：請先輸入名字再輸入姓氏，例如：Dorothy Chui, Kenneth Man）。若您是代表同行伴侶或家人回覆，您將可以一次過為大家一併登記。
           </div>
         </details>
@@ -324,6 +456,24 @@
     document.querySelectorAll('.fade-in').forEach(element => {
       observer.observe(element);
     });
+
+    // Countdown Timer Logic
+    const targetDate = new Date("November 1, 2026 00:00:00").getTime();
+
+    const countdownInterval = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById("countdown").innerHTML = "<h3 class='script-font' style='font-size: 3rem; margin-bottom: 20px;'>Today is the day!</h3>";
+        return;
+      }
+
+      // Calculate days using Math.ceil to smoothly reflect "Days Remaining"
+      const days = Math.ceil(distance / (1000 * 60 * 60 * 24));
+      document.getElementById("days").innerText = days;
+    }, 1000);
 
     // Form Submission Logic
     // REPLACE THIS URL WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
