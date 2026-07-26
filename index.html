@@ -429,7 +429,7 @@
         <label for="name">Guest Name(s) / 賓客姓名</label>
         <input type="text" id="name" name="Name" required placeholder="Please provide full names of all attendees e.g. Dorothy Chui & Kenneth Man">
         
-        <label for="attendees">Number of Attendees</label>
+        <label for="attendees">Number of Attendees / 出席人數</label>
         <select id="attendees" name="Attendees" required>
           <option value="" disabled selected>Select number of guests</option>
           <option value="0">0 (Regretfully decline)</option>
@@ -441,11 +441,26 @@
           <option value="6">6</option>
         </select>
         
+        <!-- NEW EVENTS SECTION -->
+        <label for="events">Events Attending / 將出席之環節</label>
+        <p style="font-size: 0.9rem; color: #666; margin-top: -10px; margin-bottom: 10px; line-height: 1.4;">
+          <em>*Ceremony seating is limited to about 60 guests, but we'd love for you to join us! You are always welcome to attend the ceremony even if you only select the banquet for now.<br>
+          *證婚儀式座位約為60個，但我們非常期待您的參與！即使您暫時只選擇出席午宴，屆時亦十分歡迎您參與證婚儀式。</em>
+        </p>
+        <select id="events" name="Events" required>
+          <option value="" disabled selected>Select events</option>
+          <option value="Both">Both Ceremony & Banquet / 證婚儀式及午宴</option>
+          <option value="Ceremony Only">Ceremony Only / 僅出席證婚儀式</option>
+          <option value="Banquet Only">Banquet Only / 僅出席午宴</option>
+        </select>
+        <!-- END NEW EVENTS SECTION -->
+        
         <label for="seatingRemarks">Seating Remarks for Babies / Young Children</label>
         <textarea id="seatingRemarks" name="SeatingRemarks" rows="3" placeholder="Leave blank if none. Please inform us of the names and number of babies/children who do not require a meal portion. Please let us know if a high chair is required."></textarea>
         
         <button type="submit" id="submitBtn">Send RSVP</button>
       </form>
+
       <div id="formMessage"></div>
     </section>
   </div>
